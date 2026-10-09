@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>x402 Inspector · Lumen Works</title>
+<meta name="description" content="Decode and lint x402 PAYMENT-REQUIRED / X-PAYMENT headers in your browser. Free. By Lumen Works.">
+<style>body{font:15px/1.5 system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;background:#0d1117;color:#e6edf3}
+textarea{width:100%;min-height:140px;background:#161b22;color:#e6edf3;border:1px solid #30363d;border-radius:6px;font:13px monospace;padding:.5rem}
+button{background:#238636;color:#fff;border:0;border-radius:6px;padding:.5rem 1rem;cursor:pointer;margin:.3rem .3rem 0 0}button.alt{background:#30363d}
+pre{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:.75rem;overflow:auto;font-size:13px}
+.ok{color:#3fb950}.warn{color:#d29922}.err{color:#f85149}.box{border:1px solid #30363d;border-radius:8px;padding:1rem;margin:1.5rem 0}
+input{background:#161b22;color:#e6edf3;border:1px solid #30363d;border-radius:6px;padding:.4rem;width:70%;font:13px monospace}a{color:#58a6ff}</style></head><body>
+<h1>x402 Inspector</h1>
+<p>Paste an x402 <code>PAYMENT-REQUIRED</code> header (base64), an <code>X-PAYMENT</code>/<code>PAYMENT-SIGNATURE</code> header, or a raw 402 JSON body. It is decoded and linted <b>entirely in your browser</b>; nothing is uploaded.</p>
+<textarea id="in" placeholder="eyJ4NDAyVmVyc2lvbiI6Mi... or {&quot;x402Version&quot;:1,&quot;accepts&quot;:[...]}"></textarea>
+<button onclick="run()">Decode &amp; lint</button><button class="alt" onclick="sample()">Load sample</button>
+<button class="alt" id="mdbtn" onclick="exportMd()">Export Markdown report (Pro)</button>
+<div id="lint"></div><pre id="out"></pre>
+
+<div class="box" id="pro"><h2>Pro pass: 0.05 USDC, lifetime</h2>
+<p>Decoding and linting stay free. The Pro pass unlocks <b>batch mode</b> (one header per line) and <b>Markdown report export</b>, and it pays for upkeep. Payment goes straight to the Lumen Works wallet:<br><code>0xee9790cB3960952F585379F831a89b4e00B4029A</code><br>Pay with <b>USDC on Base</b> or <b>USDC on Arc</b>. There's no account, and unlocking happens in your browser after the payment is checked on-chain.</p>
+<button onclick="pay('base')">Pay 0.05 USDC on Base (wallet)</button><button onclick="pay('arc')">Pay 0.05 USDC on Arc (wallet)</button>
+<p>Already paid, or paid from another wallet? Paste the tx hash:<br><input id="tx" placeholder="0x..."> <select id="net"><option value="base">Base</option><option value="arc">Arc</option></select> <button class="alt" onclick="verify()">Verify</button></p>
+<p id="paystat"></p></div>
+<p style="opacity:.7">Lumen Works · <a href="https://github.com/Dansgit2b/x402-inspector">source (MIT)</a> · also see <a href="https://dansgit2b.github.io/lumen-tab/">Lumen Tab</a>. This page has no affiliation with Coinbase or the x402 Foundation.</p>
+<script src="app.js"></script></body></html>
